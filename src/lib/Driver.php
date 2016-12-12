@@ -52,7 +52,8 @@ class Driver
             'cluster' => Config::get('database.redis.cluster'),
             'default' => [
                 'host' => $this->HAClient->getIpAddress(),
-                'port' => $this->HAClient->getPort()
+                'port' => $this->HAClient->getPort(),
+                'password' => $this->HAClient->getPassword()
             ]
         ];
     }
