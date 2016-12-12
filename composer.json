@@ -7,10 +7,16 @@
             "email": "drussell@indatus.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zellkz/PSRedis"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "5.*",
-        "jamescauwelier/psredis": "~1.1"
+        "sparkcentral/psredis": "dev-password-support"
     },
     "require-dev": {
         "laravel/framework": "5.*",
