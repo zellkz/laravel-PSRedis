@@ -1,6 +1,7 @@
 <?php namespace Indatus\LaravelPSRedis;
 
 use PSRedis\Client as PSRedisClient;
+use PSRedis\Client;
 use PSRedis\MasterDiscovery;
 use PSRedis\HAClient;
 use Illuminate\Support\Facades\Config;
@@ -87,10 +88,11 @@ class Driver
     public function addSentinels()
     {
         $clients = Config::get('database.redis.masters');
+        $password = Config::get('database.redis.password');
         foreach($clients as $client) {
             $sentinel = App::make(
                 'PSRedis\Client',
-                [$client['host'], $client['port']]
+                [$client['host'], $client['port'], null, Client::TYPE_SENTINEL, $password]
             );
 
             $this->masterDiscovery->addSentinel($sentinel);
